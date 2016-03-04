@@ -3798,8 +3798,9 @@ func (pub *Pubnub) initTrans(action int) http.RoundTripper {
 			logMu.Unlock()
 		}
 	}
-	transport.MaxIdleConnsPerHost = maxIdleConnsPerHost
-	infoLogger.Println(fmt.Sprintf("MaxIdleConnsPerHost set to: %d", transport.MaxIdleConnsPerHost))
+	// transport.MaxIdleConnsPerHost = maxIdleConnsPerHost
+	// infoLogger.Println(fmt.Sprintf("MaxIdleConnsPerHost set to: %d", transport.MaxIdleConnsPerHost))
+	transport.DisableKeepAlives = true
 	return transport
 }
 
